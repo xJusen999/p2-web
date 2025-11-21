@@ -35,7 +35,7 @@ export class AsistenteService {
 
     if (!evento.auditorio) {
       throw new BadRequestException(
-        'No se pueden registrar asistentes en un evento sin auditorio asignado',
+        'necesita un auditorio para crear un evento',
       );
     }
 
@@ -43,7 +43,7 @@ export class AsistenteService {
 
     if (yaRegistrado) {
       throw new BadRequestException(
-        'Ya existe un asistente con ese email en este evento',
+        'ya existe un asistente con ese email en este evento',
       );
     }
 
@@ -52,7 +52,7 @@ export class AsistenteService {
 
     if (asistentesActuales >= capacidad) {
       throw new BadRequestException(
-        'No se pueden registrar más asistentes: se alcanzó la capacidad del auditorio',
+        'no se pueden registrar mas asistentes porque se alcanzo la capacidad maxima del auditorio',
       );
     }
 

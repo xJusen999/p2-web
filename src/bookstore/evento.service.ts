@@ -23,7 +23,7 @@ export class EventoService {
 
   async crearEvento(dto: CreateEventoDto): Promise<Evento> {
     if (dto.duracionHoras <= 0) {
-      throw new BadRequestException('La duración debe ser positiva');
+      throw new BadRequestException('numero positivo requerido');
     }
 
     const ponente = await this.ponenteRepo.findOne({
@@ -36,7 +36,7 @@ export class EventoService {
 
     if (ponente.tipoPonente === 'Invitado' && dto.descripcion.length < 50) {
       throw new BadRequestException(
-        'Si el ponente es Invitado, la descripción debe tener al menos 50 caracteres',
+        'Si el ponente es Invitado su desc. debe tener al menos 50 caracteres',
       );
     }
 
@@ -81,7 +81,7 @@ export class EventoService {
 
     if (evento.estado === 'Aprobado') {
       throw new BadRequestException(
-        'No se puede eliminar un evento que ya está aprobado',
+        'No se puede eliminar un evento que ya esta aprobado',
       );
     }
 

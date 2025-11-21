@@ -30,4 +30,5 @@ export class AuditorioController {
   findById(@Param('id', ParseIntPipe) id: number) {
     return this.auditorioService.findById(id);
   }
+  //post y get basico
 }
